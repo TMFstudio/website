@@ -1,0 +1,17 @@
+﻿@model IEnumerable<DataLayer.camment_page>
+@foreach (var item in Model)
+{
+
+    <li>
+        <img src="img/thumb.png">
+        <div>
+            <span> @item.Name </span>
+            <span>@item.CreateDate.toshamsi() </span>
+        </div>
+        <p>@item.Comment</p>
+    </li>
+
+
+
+
+}

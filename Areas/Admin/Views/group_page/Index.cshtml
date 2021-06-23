@@ -1,0 +1,99 @@
+﻿@model IEnumerable<DataLayer.group_page>
+
+@{
+
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a class="btn btn-success" id="btncreat">add new group  </a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.groupTitle)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.groupTitle)
+            </td>
+            <td>
+                <a class="btn btn-warning" onclick="editg(@item.GroupID)">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
+                <a class="btn btn-danger" onclick="deleteg(@item.GroupID)">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
+
+
+            </td>
+        </tr>
+    }
+
+
+</table>
+<div class="hidden, modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="mymodallybel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="close">  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="mymodallybel">TMF</h4>
+            </div>
+
+
+            <div class="modal-body" id="modalbody">
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script src="~/Scripts/modal.js"></script>
+
+    <script>
+
+        $("#btncreat").click(function () {
+
+            $.get("/Admin/group_page/create/", function (result) {
+                $("#myModal").modal();
+                $("#mymodallybel").html("افزودن");
+                $("#modalbody").html(result);
+
+            });
+        });
+
+        function editg(id) {
+            $.get("/Admin/group_page/Edit/" + id, function (result) {
+                $("#myModal").modal();
+                $("#mymodallybel").html("ویرایش ");
+                $("#modalbody").html(result);
+
+            });
+        }
+
+        function deleteg(id) {
+            $.get("/Admin/group_page/Delete/" + id, function (result) {
+                $("#myModal").modal();
+                $("#mymodallybel").html("حذف کردن ");
+                $("#modalbody").html(result);
+
+
+
+            });
+        }
+
+    </script>
+
+}
+<a href="/Admin/pages/index" class="btn btn-success">Creat new post</a>
