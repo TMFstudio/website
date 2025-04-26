@@ -44,7 +44,7 @@ Follow these steps to set up and run the project locally:
 
 Clone the Repository:
 
-Open a terminal and run: git clone https://github.com/YourUsername/NewsWebsite.git
+Open a terminal and run: git clone 
 
 Configure the Database:
 
@@ -60,11 +60,6 @@ Open the solution in Visual Studio and build the project.
 
 Run the application; the website will be accessible at http://localhost:XXXX.
 
-Access the Admin Panel:
-
-Navigate to the admin panel by visiting: http://localhost:XXXX/admin
-
-Default admin credentials: Username: admin@example.com Password: password (Change credentials immediately after first login.)
 
 ## Customization
 
